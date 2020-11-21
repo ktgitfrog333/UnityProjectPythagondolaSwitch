@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ScWarpGoal : MonoBehaviour
 {
+    ScWarpScences ws;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.ws = new ScWarpScences();
     }
 
     // Update is called once per frame
@@ -18,6 +19,6 @@ public class ScWarpGoal : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        SceneManager.LoadScene("ScResult");
+        ws.WarpScencesResultClear(ScLevelDesignCommon.SCENES_RESULT);
     }
 }
