@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ScRetry : MonoBehaviour
 {
+    ScWarpScences ws;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.ws = new ScWarpScences();
     }
 
     // Update is called once per frame
@@ -16,7 +17,7 @@ public class ScRetry : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Return))
         {
-            SceneManager.LoadScene("ScStage");
+            ws.WarpScencesResultClear(ScLevelDesignCommon.SCENES_STAGE);
         }
     }
 }
