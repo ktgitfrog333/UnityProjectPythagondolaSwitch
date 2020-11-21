@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScOprationPlayer : MonoBehaviour
 {
     private Rigidbody rb;
-    private BallPlayer bp;
+    private ScBallPlayer bp;
 
     private float speed;
     private Vector3 direction;
@@ -14,8 +14,8 @@ public class ScOprationPlayer : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
-        this.bp = new BallPlayer();
-        this.speed = (float)bp.GetSpeedBySystem();
+        this.bp = new ScBallPlayer();
+        this.speed = (float)bp.GetSpeedBySystem(ScLevelDesignOfBall.BALL_SPEED);
     }
 
     // Update is called once per frame
