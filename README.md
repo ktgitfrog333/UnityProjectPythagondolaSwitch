@@ -1,5 +1,5 @@
 # UnityProjectPythagondolaSwitch<br>
-######コミット: 7969bc967d95e013b40eae3a9796fb6c328e4922 [7969bc9]<br>
+###### コミット: 7969bc967d95e013b40eae3a9796fb6c328e4922 [7969bc9]<br>
 日時: 2020年11月21日 17:53:45<br>
 ・シーン名を定数で管理<br>
 Assets\Scripts\ScLevelDesignCommon.cs<br>
