@@ -2,25 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScLevelDesignCommon : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
 /// <summary>
 /// 全体のパラメータを管理
 /// </summary>
-public class LevelDesignCommon
+public static class ScLevelDesignCommon
 {
 
 }

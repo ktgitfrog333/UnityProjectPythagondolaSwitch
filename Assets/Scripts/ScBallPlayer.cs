@@ -2,25 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScBallPlayer : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
 /// <summary>
 /// プレイヤーの動きを制御
 /// </summary>
-public class BallPlayer : PlayerRoll, PlayerRollBySystem
+public class ScBallPlayer : ScPlayerRoll, ScInterfacePlayerRollBySystem
 {
     /// <summary>
     /// キー操作（左右、上下）によって、
@@ -39,7 +24,7 @@ public class BallPlayer : PlayerRoll, PlayerRollBySystem
         throw new System.NotImplementedException();
     }
 
-    public object GetDirectionBySystem()
+    public object GetDirectionBySystem(float value)
     {
         throw new System.NotImplementedException();
     }
@@ -49,8 +34,8 @@ public class BallPlayer : PlayerRoll, PlayerRollBySystem
     /// 速度（Speed）を制御
     /// </summary>
     /// <returns>速度（Speed）</returns>
-    public object GetSpeedBySystem()
+    public object GetSpeedBySystem(float value)
     {
-        return BallSpeed;
+        return value;
     }
 }
