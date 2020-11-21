@@ -7,5 +7,5 @@ using UnityEngine;
 /// </summary>
 public static class ScLevelDesignOfBall
 {
-    public static float BALL_SPEED = 20f;
+    public static float BALL_SPEED = 10f;
 }
