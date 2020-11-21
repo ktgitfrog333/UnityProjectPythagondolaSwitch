@@ -21,6 +21,8 @@ public class ScOprationPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //test
+
         this.direction = (Vector3)bp.GetDirectionByOparation();
         rb.AddForce(direction * speed);
     }
