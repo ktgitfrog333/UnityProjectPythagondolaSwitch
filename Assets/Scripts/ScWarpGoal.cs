@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ScWarpGoal : MonoBehaviour
 {
-    ScWarpScences ws;
+    GameObject go;
+    ScWarpScences wc;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.ws = new ScWarpScences();
+        this.go = GameObject.Find("ManageObject");
+        this.wc = go.GetComponent<ScWarpScences>();
     }
 
     // Update is called once per frame
@@ -17,8 +19,9 @@ public class ScWarpGoal : MonoBehaviour
     {
         
     }
+
     void OnCollisionEnter(Collision col)
     {
-        ws.WarpScencesResultClear(ScLevelDesignCommon.SCENES_RESULT);
+        wc.FadeOutStart(0, 0, 0, 0, ScLevelDesignCommon.SCENES_RESULT);
     }
 }
