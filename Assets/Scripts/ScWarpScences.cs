@@ -9,43 +9,70 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ScWarpScences : MonoBehaviour
 {
-    private bool isFadeOut;
-    private bool isFadeIn;
     private float fadeSpeed;
     public Image fadeImage;
     private float red, green, blue, alfa;
     //シーン遷移のための型
     private string currentScene;
 
+    IEnumerator fadeInCoroutine;
+    IEnumerator fadeOutCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
+        this.fadeInCoroutine = FadeIn();
+        this.fadeOutCoroutine = FadeOut();
+
+        // TODO:20201123 ManageObjectがいくつも作られないように、個数を数える処理を作る
         DontDestroyOnLoad(this);
 
-        this.isFadeOut = false;
-        this.isFadeIn = true;
         this.fadeSpeed = 0.75f;
 
         SetRGBA(0, 0, 0, 1);
+        StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (isFadeIn)
+
+    }
+
+    /// <summary>
+    /// フェードインを実行するコルーチンを取得
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FadeIn()
+    {
+        for (int i = 0; i < 360 || alfa > 0.0f; i++)
         {
-            this.alfa -= fadeSpeed * Time.deltaTime;
+            this.alfa = Mathf.MoveTowards(alfa, 0f, fadeSpeed * Time.deltaTime);
             SetColor();
-            if (alfa <= 0) this.isFadeIn = false;
-        }
-        if (isFadeOut)
-        {
-            this.alfa += fadeSpeed * Time.deltaTime;
-            SetColor();
-            if (alfa >= 1)
+            yield return null;
+            if (alfa < 0.1f)
             {
-                this.isFadeOut = false;
+                StopCoroutine(fadeInCoroutine);
+            }
+        }
+    }
+
+    /// <summary>
+    /// フェードアウトを実行するコルーチンを取得
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FadeOut()
+    {
+        for (int i = 0; i < 360 || alfa < 1.1f; i++)
+        {
+            this.alfa = Mathf.MoveTowards(alfa, 1f, fadeSpeed * Time.deltaTime);
+            SetColor();
+            yield return null;
+            if (alfa > 0.9f)
+            {
                 WarpScencesResultClear(currentScene);
+                StopCoroutine(fadeOutCoroutine);
             }
         }
     }
@@ -67,6 +94,17 @@ public class ScWarpScences : MonoBehaviour
     }
 
     /// <summary>
+    /// シーン遷移が完了した際にフェードインを開始するように設定
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
+    private void FadeInStart(Scene scene, LoadSceneMode mode)
+    {
+        this.fadeInCoroutine = FadeIn();
+        StartCoroutine(fadeInCoroutine);
+    }
+
+    /// <summary>
     /// フェードアウト開始時の画像のRGBA値と次のシーン名を指定
     /// </summary>
     /// <param name="red">画像の赤成分</param>
@@ -78,18 +116,9 @@ public class ScWarpScences : MonoBehaviour
     {
         SetRGBA(red, green, blue, alfa);
         SetColor();
-        this.isFadeOut = true;
         this.currentScene = nextScene;
-    }
-
-    /// <summary>
-    /// シーン遷移が完了した際にフェードインを開始するように設定
-    /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="mode"></param>
-    private void FadeInStart(Scene scene, LoadSceneMode mode)
-    {
-        this.isFadeIn = true;
+        this.fadeOutCoroutine = FadeOut();
+        StartCoroutine(fadeOutCoroutine);
     }
 
     /// <summary>
