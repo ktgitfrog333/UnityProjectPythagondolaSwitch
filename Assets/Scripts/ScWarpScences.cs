@@ -18,6 +18,15 @@ public class ScWarpScences : MonoBehaviour
     IEnumerator fadeInCoroutine;
     IEnumerator fadeOutCoroutine;
 
+    /// <summary>
+    /// プレイヤーオブジェクト
+    /// </summary>
+    private GameObject goSpBall;
+    /// <summary>
+    /// プレイヤースクリプト
+    /// </summary>
+    private ScOprationPlayer scOprPlyer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +41,9 @@ public class ScWarpScences : MonoBehaviour
         SetRGBA(0, 0, 0, 1);
         StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
+
+        this.goSpBall = GameObject.Find("SpBall");
+        this.scOprPlyer = goSpBall.GetComponent<ScOprationPlayer>();
     }
 
     // Update is called once per frame
@@ -54,6 +66,7 @@ public class ScWarpScences : MonoBehaviour
             if (alfa < 0.1f)
             {
                 StopCoroutine(fadeInCoroutine);
+                scOprPlyer.OparationEnableChange();
             }
         }
     }

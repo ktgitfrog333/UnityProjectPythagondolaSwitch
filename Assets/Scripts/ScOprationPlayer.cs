@@ -10,6 +10,17 @@ public class ScOprationPlayer : MonoBehaviour
     private float speed;
     private Vector3 direction;
 
+    // TODO:20201123 プレイヤー操作フラグを別オブジェクトで管理する？
+    /// <summary>
+    /// プレイヤーの操作禁止フラグ
+    /// </summary>
+    private bool oparationDisabledFlag;
+    
+    void Awake()
+    {
+        this.oparationDisabledFlag = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +32,26 @@ public class ScOprationPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.direction = (Vector3)bp.GetDirectionByOparation();
-        rb.AddForce(direction * speed);
+        if (!oparationDisabledFlag)
+        {
+            this.direction = (Vector3)bp.GetDirectionByOparation();
+            rb.AddForce(direction * speed);
+        }
+    }
+
+    /// <summary>
+    /// プレイヤー操作を無効
+    /// </summary>
+    public void OparationDisableChange()
+    {
+        this.oparationDisabledFlag = true;
+    }
+
+    /// <summary>
+    /// プレイヤー操作を有効
+    /// </summary>
+    public void OparationEnableChange()
+    {
+        this.oparationDisabledFlag = false;
     }
 }
