@@ -9,22 +9,27 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ScWarpScences : MonoBehaviour
 {
-    private float fadeSpeed;
+    /// <summary>
+    /// フェード処理に必要なImage情報
+    /// コンポーネントで登録する為にパブリック化
+    /// </summary>
     public Image fadeImage;
+    /// <summary>不透明度変化の速度</summary>
+    private float fadeSpeed;
+    /// <summary>
+    /// Imageのカラー値を管理
+    /// RGB、不透明度
+    /// </summary>
     private float red, green, blue, alfa;
-    //シーン遷移のための型
+    /// <summary>シーン遷移のための型</summary>
     private string currentScene;
 
-    IEnumerator fadeInCoroutine;
-    IEnumerator fadeOutCoroutine;
+    /// <summary>フェードイン処理管理用のコルーチン</summary>
+    private IEnumerator fadeInCoroutine;
+    /// <summary>フェードアウト処理管理用のコルーチン</summary>
+    private IEnumerator fadeOutCoroutine;
 
-    /// <summary>
-    /// プレイヤーオブジェクト
-    /// </summary>
-    private GameObject goSpBall;
-    /// <summary>
-    /// プレイヤースクリプト
-    /// </summary>
+    /// <summary>プレイヤースクリプト</summary>
     private ScOprationPlayer scOprPlyer;
 
     // Start is called before the first frame update
@@ -42,8 +47,7 @@ public class ScWarpScences : MonoBehaviour
         StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
 
-        this.goSpBall = GameObject.Find("SpBall");
-        this.scOprPlyer = goSpBall.GetComponent<ScOprationPlayer>();
+        this.scOprPlyer = (GameObject.Find(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL)).GetComponent<ScOprationPlayer>();
     }
 
     // Update is called once per frame

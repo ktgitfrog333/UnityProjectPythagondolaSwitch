@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// リトライ制御オブジェクト用のスクリプト
+/// </summary>
 public class ScRetry : MonoBehaviour
 {
-    GameObject go;
-    ScWarpScences wc;
+    /// <summary>フェード処理管理スクリプト</summary>
+    private ScWarpScences scWrpScn;
+    /// <summary>リトライ実行入力キーの制御フラグ</summary>
     private bool keyPushFlag;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.go = GameObject.Find("ManageObject");
-        this.wc = go.GetComponent<ScWarpScences>();
-
+        this.scWrpScn = (GameObject.Find(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT)).GetComponent<ScWarpScences>();
         this.keyPushFlag = false;
     }
 
@@ -22,7 +24,7 @@ public class ScRetry : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Return) && !keyPushFlag)
         {
-            wc.FadeOutStart(0, 0, 0, 0, ScLevelDesignCommon.SCENES_STAGE);
+            scWrpScn.FadeOutStart(0, 0, 0, 0, ScLevelDesignCommon.SCENES_STAGE);
             this.keyPushFlag = true;
         }
     }
