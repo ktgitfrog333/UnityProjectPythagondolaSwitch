@@ -7,5 +7,12 @@ using UnityEngine;
 /// </summary>
 public static class ScLevelDesignOfBall
 {
+    /// <summary>
+    /// ボール速度
+    /// </summary>
     public static float BALL_SPEED = 10f;
+    /// <summary>
+    /// ボールのオブジェクト名
+    /// </summary>
+    public static readonly string GAMEOBJECTS_SP_BALL = "SpBall";
 }
