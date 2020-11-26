@@ -31,10 +31,14 @@ public class ScWarpScences : MonoBehaviour
 
     /// <summary>プレイヤースクリプト</summary>
     private ScOprationPlayer scOprPlyer;
+    /// <summary>タイマースクリプト</summary>
+    private ScTimer scTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.scTimer = GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
+
         this.fadeInCoroutine = FadeIn();
         this.fadeOutCoroutine = FadeOut();
 
@@ -47,7 +51,7 @@ public class ScWarpScences : MonoBehaviour
         StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
 
-        this.scOprPlyer = (GameObject.Find(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL)).GetComponent<ScOprationPlayer>();
+        this.scOprPlyer = GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
     }
 
     // Update is called once per frame
@@ -71,6 +75,7 @@ public class ScWarpScences : MonoBehaviour
             {
                 StopCoroutine(fadeInCoroutine);
                 scOprPlyer.OparationEnableChange();
+                if (!ReferenceEquals(scTimer, null) && scTimer != null) scTimer.TimerEnableSwitch();
             }
         }
     }
@@ -111,6 +116,37 @@ public class ScWarpScences : MonoBehaviour
     }
 
     /// <summary>
+    /// 時間計測結果用のスクリプトに計測時間を渡す
+    /// </summary>
+    private void GameSceneLoaded()
+    {
+        ScResultSet sc = GetComponentScriptInGameObject<ScResultSet>(ScLevelDesignCommon.GAMEOBJECTS_RESULT_SETTER);
+        if (sc != null) sc.resultTime = scTimer.countTime;
+    }
+
+    /// <summary>
+    /// ゲームオブジェクトにコンポーネントされているスクリプトを取得
+    /// </summary>
+    /// <typeparam name="Type">スクリプトクラスの型</typeparam>
+    /// <param name="key">ゲームオブジェクト名</param>
+    /// <returns>スクリプト</returns>
+    private Type GetComponentScriptInGameObject<Type>(string key)
+    {
+        GameObject g = GameObject.Find(key);
+        object o = null;
+        
+        if (!ReferenceEquals(g, null) && g != null)
+        {
+            var sc = g.GetComponent<Type>();
+            if (!ReferenceEquals(sc, null) && sc != null)
+            {
+                o = sc;
+            }
+        }
+        return (Type) o;
+    }
+
+    /// <summary>
     /// シーン遷移が完了した際にフェードインを開始するように設定
     /// </summary>
     /// <param name="scene"></param>
@@ -119,6 +155,7 @@ public class ScWarpScences : MonoBehaviour
     {
         this.fadeInCoroutine = FadeIn();
         StartCoroutine(fadeInCoroutine);
+        GameSceneLoaded();
     }
 
     /// <summary>

@@ -19,4 +19,12 @@ public static class ScLevelDesignCommon
     /// フェード処理管理のゲームオブジェクト名
     /// </summary>
     public static readonly string GAMEOBJECTS_MANAGE_OBJECT = "ManageObject";
+    /// <summary>
+    /// タイマーのゲームオブジェクト名
+    /// </summary>
+    public static readonly string GAMEOBJECTS_TIMER = "TxTimer";
+    /// <summary>
+    /// 時間計測結果のゲームオブジェクト名
+    /// </summary>
+    public static readonly string GAMEOBJECTS_RESULT_SETTER = "TxResultSetter";
 }
