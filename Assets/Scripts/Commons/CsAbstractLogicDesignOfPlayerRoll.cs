@@ -7,7 +7,7 @@ using UnityEngine;
 /// ・角度（Direction）
 /// ・速度（Speed）
 /// </summary>
-public abstract class ScPlayerRoll
+public abstract class CsAbstractLogicDesignOfPlayerRoll
 {
     public abstract object GetDirectionByOparation();
     public abstract object GetSpeedByOparation();

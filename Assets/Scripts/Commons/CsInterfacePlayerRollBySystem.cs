@@ -7,7 +7,7 @@ using UnityEngine;
 /// ・角度（Direction）
 /// ・速度（Speed）
 /// </summary>
-public interface ScInterfacePlayerRollBySystem
+public interface CsInterfacePlayerRollBySystem
 {
     object GetDirectionBySystem(float value);
     object GetSpeedBySystem(float value);

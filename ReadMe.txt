@@ -1,3 +1,39 @@
+コミット: edb9b0b38485204f9fd91297ea69ec1210acf4bf [edb9b0b]
+日時: 2020年12月5日 22:54:50
+・ゲームオブジェクトのインスタンス管理をシングルトン制御　及び　フェードの黒い部分のずれを修正
+Assets\Scripts\ScWarpScences.cs
+
+コミット: 9f5c464ae1e59e739bc84c8973660eee43569930 [9f5c464]
+日時: 2020年12月5日 20:48:48
+・ファイル名変更_A
+（削除-）Assets\Scripts\ScAbstractPlayerRoll.cs
+（作成+）Assets\Scripts\Commons\CsAbstractLogicDesignOfPlayerRoll.cs
+・ファイル名変更_B
+（削除-）Assets\Scripts\ScBallPlayer.cs
+（作成+）Assets\Scripts\Commons\CsNormalLogicDesignOfBallPlayer.cs
+・ファイル名変更_C
+（削除-）Assets\Scripts\ScInterfacePlayerRollBySystem.cs
+（作成+）Assets\Scripts\Commons\CsInterfacePlayerRollBySystem.cs
+・ファイル名変更_D
+（削除-）Assets\Scripts\ScLevelDesignCommon.cs
+（作成+）Assets\Scripts\Commons\CsNormalLevelDesignOfCommon.cs
+・ファイル名変更_E
+（削除-）Assets\Scripts\ScLevelDesignOfBall.cs
+（作成+）Assets\Scripts\Commons\CsNormalLevelDesignOfBall.cs
+・ファイル名変更_F
+（削除-）Assets\Scripts\ScLogicDesignCommon.cs
+（作成+）Assets\Scripts\Commons\CsNormalLogicDesignOfCommon.cs
+・ファイル名変更_G
+（削除-）Assets\Scripts\ScLogicDesignOfSceneStaging.cs
+（作成+）Assets\Scripts\Commons\CsNormalLogicDesignOfSceneStaging.cs
+・ファイル名変更_H
+（削除-）Assets\Scripts\ScOprationPlayer.cs
+（作成+）Assets\Scripts\ScOperationPlayer.cs
+・クラス名変更の影響でそれぞれのスクリプトで呼び出し処理を変更
+Assets\Scripts\ScRetry.cs
+Assets\Scripts\ScWarpGoal.cs
+Assets\Scripts\ScWarpScences.cs
+
 コミット: 723094ebe3ffd461e9c7adca0de23b3664e23d19 [723094e]
 日時: 2020年12月5日 15:45:29
 コミット「d88fc11447b8307d15583581df04fbc8294152a7」の反映漏れ

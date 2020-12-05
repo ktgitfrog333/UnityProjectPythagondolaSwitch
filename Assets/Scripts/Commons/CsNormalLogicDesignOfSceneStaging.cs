@@ -6,7 +6,7 @@ using UnityEngine;
 /// Imageのカラーセット
 /// <para/>カラーセットしたImageを取り出す
 /// </summary>
-public class ScLogicDesignOfSceneStaging
+public class CsNormalLogicDesignOfSceneStaging
 {
     /// <summary>赤のカラーレベル</summary>
     public float red { get; set; }
@@ -24,12 +24,12 @@ public class ScLogicDesignOfSceneStaging
         get { return new Color(red, green, blue, alpha); }
     }
 
-    public ScLogicDesignOfSceneStaging()
+    public CsNormalLogicDesignOfSceneStaging()
     {
-        this.red = ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN;
-        this.green = ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN;
-        this.blue = ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN;
-        this.alpha = ScLevelDesignCommon.IMAGE_ALPHA_LEVEL_MIN;
+        this.red = CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN;
+        this.green = CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN;
+        this.blue = CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN;
+        this.alpha = CsNormalLevelDesignOfCommon.IMAGE_ALPHA_LEVEL_MIN;
         this.fadeImageColorIsBuffer = new Color(red, green, blue, alpha);
     }
 }

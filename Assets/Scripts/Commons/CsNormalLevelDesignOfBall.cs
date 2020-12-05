@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// ボール制御のパラメータを管理
 /// </summary>
-public static class ScLevelDesignOfBall
+public static class CsNormalLevelDesignOfBall
 {
     /// <summary>
     /// ボール速度
