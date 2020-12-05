@@ -38,8 +38,26 @@ public class ScWarpScences : MonoBehaviour
     /// <summary>Imageのカラー情報</summary>
     private CsNormalLogicDesignOfSceneStaging logicScene;
 
+    /// <summary>現在存在しているオブジェクト実体の記憶領域</summary>
+    static ScWarpScences _instanceScWarpScences = null;
+
+    /// <summary>オブジェクト実体の参照（初期参照時、実体の登録も行う）</summary>
+    static ScWarpScences instanceScWarpScences
+    {
+        get { return _instanceScWarpScences ?? (_instanceScWarpScences = FindObjectOfType<ScWarpScences>()); }
+    }
+
     private void Awake()
     {
+        if (this != instanceScWarpScences)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+
         this.lgc = new CsNormalLogicDesignOfCommon();
         this.logicScene = new CsNormalLogicDesignOfSceneStaging();
     }
@@ -51,10 +69,6 @@ public class ScWarpScences : MonoBehaviour
 
         this.fadeInCoroutine = FadeIn();
         this.fadeOutCoroutine = FadeOut();
-
-        // TODO:20201123 ManageObjectがいくつも作られないように、個数を数える処理を作る
-        DontDestroyOnLoad(this);
-
         this.fadeSpeed = 0.75f;
 
         StartCoroutine(fadeInCoroutine);
@@ -67,6 +81,13 @@ public class ScWarpScences : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void OnDestroy()
+    {
+        // ※破棄時に、登録した実体の解除を行なっている
+        // 自身がインスタンスなら登録を解除
+        if (this == instanceScWarpScences) _instanceScWarpScences = null;
     }
 
     /// <summary>
@@ -83,7 +104,18 @@ public class ScWarpScences : MonoBehaviour
             if (logicScene.alpha < 0.1f)
             {
                 StopCoroutine(fadeInCoroutine);
-                scOprPlyer.OparationEnableSwitch();
+                if (scOprPlyer == null)
+                {
+                    this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOperationPlayer>(CsNormalLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
+                }
+                if (!ReferenceEquals(scOprPlyer, null) && scOprPlyer != null)
+                {
+                    scOprPlyer.OparationEnableSwitch();
+                }
+                if (scTimer == null)
+                {
+                    this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_TIMER);
+                }
                 if (!ReferenceEquals(scTimer, null) && scTimer != null)
                 {
                     scTimer.TimerEnableSwitch();
@@ -146,6 +178,9 @@ public class ScWarpScences : MonoBehaviour
     /// <param name="mode"></param>
     private void FadeInStart(Scene scene, LoadSceneMode mode)
     {
+        // フェードImageを表示する為のCanvasへカメラ情報をセット
+        Camera targetCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        GameObject.Find("Canvas").GetComponent<Canvas>().worldCamera = targetCamera;
         this.fadeInCoroutine = FadeIn();
         StartCoroutine(fadeInCoroutine);
         GameSceneLoaded();
