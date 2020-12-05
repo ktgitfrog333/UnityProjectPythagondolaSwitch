@@ -27,4 +27,16 @@ public static class ScLevelDesignCommon
     /// 時間計測結果のゲームオブジェクト名
     /// </summary>
     public static readonly string GAMEOBJECTS_RESULT_SETTER = "TxResultSetter";
+    /// <summary>
+    /// 最小カラーレベル
+    /// </summary>
+    public static readonly float IMAGE_COLOR_LEVEL_MIN = 0f;
+    /// <summary>
+    /// 最大の透明度
+    /// </summary>
+    public static readonly float IMAGE_ALPHA_LEVEL_MIN = 1f;
+    /// <summary>
+    /// 最小の透明度
+    /// </summary>
+    public static readonly float IMAGE_ALPHA_LEVEL_MAX = 0f;
 }

@@ -11,11 +11,18 @@ public class ScRetry : MonoBehaviour
     private ScWarpScences scWrpScn;
     /// <summary>リトライ実行入力キーの制御フラグ</summary>
     private bool keyPushFlag;
+    /// <summary>共通ロジック</summary>
+    private ScLogicDesignCommon lgc;
+
+    private void Awake()
+    {
+        this.lgc = new ScLogicDesignCommon();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scWrpScn = (GameObject.Find(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT)).GetComponent<ScWarpScences>();
+        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT);
         this.keyPushFlag = false;
     }
 
