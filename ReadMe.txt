@@ -1,3 +1,25 @@
+コミット: 723094ebe3ffd461e9c7adca0de23b3664e23d19 [723094e]
+日時: 2020年12月5日 15:45:29
+コミット「d88fc11447b8307d15583581df04fbc8294152a7」の反映漏れ
+※バッファファイルの為、確認不要です。
+
+コミット: d88fc11447b8307d15583581df04fbc8294152a7
+日時: 2020年12月5日 15:43:04
+・カラーレベルと不透明度の最小値、最大値の定数を追加
+Assets\Scripts\ScLevelDesignCommon.cs
+・ゲームオブジェクト内のスクリプトコンポーネント呼び出しロジックの作成
+Assets\Scripts\ScLogicDesignCommon.cs
+・カラー不透明度をコントロールするロジックの作成
+Assets\Scripts\ScLogicDesignOfSceneStaging.cs
+・上記、「ゲームオブジェクト内のスクリプトコンポーネント呼び出しロジックの作成」の影響による変更
+Assets\Scripts\ScRetry.cs
+・上記、「ゲームオブジェクト内のスクリプトコンポーネント呼び出しロジックの作成」及び「カラー不透明度をコントロールするロジックの作成」の影響による変更
+Assets\Scripts\ScWarpGoal.cs
+Assets\Scripts\ScWarpScences.cs
+・プレイヤー操作フラグの切り替えメソッド名の変更
+（※原則、True or Falseの切り替えにはChangeではなくSwitchを使用する）
+Assets\Scripts\ScOprationPlayer.cs
+
 コミット: 5deba8404cd8a3c471f931b16a6e86ab3f0b8e8d
 日時: 2020年11月26日 22:59:54
 ・ゴール処理にタイマー情報を追加
