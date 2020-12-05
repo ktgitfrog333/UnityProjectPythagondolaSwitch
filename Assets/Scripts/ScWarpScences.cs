@@ -30,24 +30,24 @@ public class ScWarpScences : MonoBehaviour
     private IEnumerator fadeOutCoroutine;
 
     /// <summary>プレイヤースクリプト</summary>
-    private ScOprationPlayer scOprPlyer;
+    private ScOperationPlayer scOprPlyer;
     /// <summary>タイマースクリプト</summary>
     private ScTimer scTimer;
     /// <summary>共通ロジック</summary>
-    private ScLogicDesignCommon lgc;
+    private CsNormalLogicDesignOfCommon lgc;
     /// <summary>Imageのカラー情報</summary>
-    private ScLogicDesignOfSceneStaging logicScene;
+    private CsNormalLogicDesignOfSceneStaging logicScene;
 
     private void Awake()
     {
-        this.lgc = new ScLogicDesignCommon();
-        this.logicScene = new ScLogicDesignOfSceneStaging();
+        this.lgc = new CsNormalLogicDesignOfCommon();
+        this.logicScene = new CsNormalLogicDesignOfSceneStaging();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
+        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_TIMER);
 
         this.fadeInCoroutine = FadeIn();
         this.fadeOutCoroutine = FadeOut();
@@ -60,7 +60,7 @@ public class ScWarpScences : MonoBehaviour
         StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
 
-        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
+        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOperationPlayer>(CsNormalLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
     }
 
     // Update is called once per frame
@@ -132,7 +132,7 @@ public class ScWarpScences : MonoBehaviour
     /// </summary>
     private void GameSceneLoaded()
     {
-        ScResultSet sc = lgc.GetComponentScriptInGameObject<ScResultSet>(ScLevelDesignCommon.GAMEOBJECTS_RESULT_SETTER);
+        ScResultSet sc = lgc.GetComponentScriptInGameObject<ScResultSet>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_RESULT_SETTER);
         if (sc != null)
         {
             sc.resultTime = scTimer.countTime;

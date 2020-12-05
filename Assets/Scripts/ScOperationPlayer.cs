@@ -5,12 +5,12 @@ using UnityEngine;
 /// <summary>
 /// プレイヤー制御オブジェクト用のスクリプト
 /// </summary>
-public class ScOprationPlayer : MonoBehaviour
+public class ScOperationPlayer : MonoBehaviour
 {
     /// <summary>プレイヤーのゲームオブジェクトの物理情報</summary>
     private Rigidbody rbdy;
     /// <summary>プレイヤー制御関数</summary>
-    private ScBallPlayer bplyr;
+    private CsNormalLogicDesignOfBallPlayer bplyr;
     /// <summary>移動速度</summary>
     private float speed;
     /// <summary>移動角度</summary>
@@ -29,8 +29,8 @@ public class ScOprationPlayer : MonoBehaviour
     void Start()
     {
         this.rbdy = GetComponent<Rigidbody>();
-        this.bplyr = new ScBallPlayer();
-        this.speed = (float)bplyr.GetSpeedBySystem(ScLevelDesignOfBall.BALL_SPEED);
+        this.bplyr = new CsNormalLogicDesignOfBallPlayer();
+        this.speed = (float)bplyr.GetSpeedBySystem(CsNormalLevelDesignOfBall.BALL_SPEED);
     }
 
     // Update is called once per frame

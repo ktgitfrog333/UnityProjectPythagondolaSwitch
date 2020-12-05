@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// プレイヤーの動きを制御
 /// </summary>
-public class ScBallPlayer : ScPlayerRoll, ScInterfacePlayerRollBySystem
+public class CsNormalLogicDesignOfBallPlayer : CsAbstractLogicDesignOfPlayerRoll, CsInterfacePlayerRollBySystem
 {
     /// <summary>
     /// キー操作（左右、上下）によって、

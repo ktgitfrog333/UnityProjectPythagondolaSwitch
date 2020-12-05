@@ -12,17 +12,17 @@ public class ScRetry : MonoBehaviour
     /// <summary>リトライ実行入力キーの制御フラグ</summary>
     private bool keyPushFlag;
     /// <summary>共通ロジック</summary>
-    private ScLogicDesignCommon lgc;
+    private CsNormalLogicDesignOfCommon lgc;
 
     private void Awake()
     {
-        this.lgc = new ScLogicDesignCommon();
+        this.lgc = new CsNormalLogicDesignOfCommon();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT);
+        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_MANAGE_OBJECT);
         this.keyPushFlag = false;
     }
 
@@ -31,7 +31,7 @@ public class ScRetry : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Return) && !keyPushFlag)
         {
-            scWrpScn.FadeOutStart(0, 0, 0, 0, ScLevelDesignCommon.SCENES_STAGE);
+            scWrpScn.FadeOutStart(0, 0, 0, 0, CsNormalLevelDesignOfCommon.SCENES_STAGE);
             this.keyPushFlag = true;
         }
     }

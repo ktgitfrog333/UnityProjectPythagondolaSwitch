@@ -10,23 +10,23 @@ public class ScWarpGoal : MonoBehaviour
     /// <summary>フェード処理管理スクリプト</summary>
     private ScWarpScences scWrpScn;
     /// <summary>プレイヤースクリプト</summary>
-    private ScOprationPlayer scOprPlyer;
+    private ScOperationPlayer scOprPlyer;
     /// <summary>タイマースクリプト</summary>
     private ScTimer scTimer;
     /// <summary>共通ロジック</summary>
-    private ScLogicDesignCommon lgc;
+    private CsNormalLogicDesignOfCommon lgc;
 
     private void Awake()
     {
-        this.lgc = new ScLogicDesignCommon();
+        this.lgc = new CsNormalLogicDesignOfCommon();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT);
-        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
-        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
+        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_MANAGE_OBJECT);
+        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOperationPlayer>(CsNormalLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
+        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_TIMER);
     }
 
     // Update is called once per frame
@@ -39,6 +39,6 @@ public class ScWarpGoal : MonoBehaviour
     {
         scOprPlyer.OparationDisableSwitch();
         scTimer.TimerDisableSwitch();
-        scWrpScn.FadeOutStart(ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_ALPHA_LEVEL_MAX, ScLevelDesignCommon.SCENES_RESULT);
+        scWrpScn.FadeOutStart(CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN, CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN, CsNormalLevelDesignOfCommon.IMAGE_COLOR_LEVEL_MIN, CsNormalLevelDesignOfCommon.IMAGE_ALPHA_LEVEL_MAX, CsNormalLevelDesignOfCommon.SCENES_RESULT);
     }
 }

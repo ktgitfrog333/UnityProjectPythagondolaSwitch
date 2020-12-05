@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 共通ロジックを管理
 /// </summary>
-public class ScLogicDesignCommon
+public class CsNormalLogicDesignOfCommon
 {
     /// <summary>
     /// ゲームオブジェクトにコンポーネントされているスクリプトを取得
