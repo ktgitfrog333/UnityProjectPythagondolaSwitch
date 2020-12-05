@@ -33,11 +33,21 @@ public class ScWarpScences : MonoBehaviour
     private ScOprationPlayer scOprPlyer;
     /// <summary>タイマースクリプト</summary>
     private ScTimer scTimer;
+    /// <summary>共通ロジック</summary>
+    private ScLogicDesignCommon lgc;
+    /// <summary>Imageのカラー情報</summary>
+    private ScLogicDesignOfSceneStaging logicScene;
+
+    private void Awake()
+    {
+        this.lgc = new ScLogicDesignCommon();
+        this.logicScene = new ScLogicDesignOfSceneStaging();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scTimer = GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
+        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
 
         this.fadeInCoroutine = FadeIn();
         this.fadeOutCoroutine = FadeOut();
@@ -47,11 +57,10 @@ public class ScWarpScences : MonoBehaviour
 
         this.fadeSpeed = 0.75f;
 
-        SetRGBA(0, 0, 0, 1);
         StartCoroutine(fadeInCoroutine);
         SceneManager.sceneLoaded += FadeInStart;
 
-        this.scOprPlyer = GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
+        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
     }
 
     // Update is called once per frame
@@ -66,16 +75,19 @@ public class ScWarpScences : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FadeIn()
     {
-        for (int i = 0; i < 360 || alfa > 0.0f; i++)
+        for (int i = 0; i < 360 || logicScene.alpha > 0.0f; i++)
         {
-            this.alfa = Mathf.MoveTowards(alfa, 0f, fadeSpeed * Time.deltaTime);
-            SetColor();
+            this.logicScene.alpha = Mathf.MoveTowards(logicScene.alpha, 0f, fadeSpeed * Time.deltaTime);
+            this.fadeImage.color = this.logicScene.fadeImageColor;
             yield return null;
-            if (alfa < 0.1f)
+            if (logicScene.alpha < 0.1f)
             {
                 StopCoroutine(fadeInCoroutine);
-                scOprPlyer.OparationEnableChange();
-                if (!ReferenceEquals(scTimer, null) && scTimer != null) scTimer.TimerEnableSwitch();
+                scOprPlyer.OparationEnableSwitch();
+                if (!ReferenceEquals(scTimer, null) && scTimer != null)
+                {
+                    scTimer.TimerEnableSwitch();
+                }
             }
         }
     }
@@ -86,12 +98,12 @@ public class ScWarpScences : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FadeOut()
     {
-        for (int i = 0; i < 360 || alfa < 1.1f; i++)
+        for (int i = 0; i < 360 || logicScene.alpha < 1.1f; i++)
         {
-            this.alfa = Mathf.MoveTowards(alfa, 1f, fadeSpeed * Time.deltaTime);
-            SetColor();
+            this.logicScene.alpha = Mathf.MoveTowards(logicScene.alpha, 1f, fadeSpeed * Time.deltaTime);
+            this.fadeImage.color = this.logicScene.fadeImageColor;
             yield return null;
-            if (alfa > 0.9f)
+            if (logicScene.alpha > 0.9f)
             {
                 WarpScencesResultClear(currentScene);
                 StopCoroutine(fadeOutCoroutine);
@@ -120,30 +132,11 @@ public class ScWarpScences : MonoBehaviour
     /// </summary>
     private void GameSceneLoaded()
     {
-        ScResultSet sc = GetComponentScriptInGameObject<ScResultSet>(ScLevelDesignCommon.GAMEOBJECTS_RESULT_SETTER);
-        if (sc != null) sc.resultTime = scTimer.countTime;
-    }
-
-    /// <summary>
-    /// ゲームオブジェクトにコンポーネントされているスクリプトを取得
-    /// </summary>
-    /// <typeparam name="Type">スクリプトクラスの型</typeparam>
-    /// <param name="key">ゲームオブジェクト名</param>
-    /// <returns>スクリプト</returns>
-    private Type GetComponentScriptInGameObject<Type>(string key)
-    {
-        GameObject g = GameObject.Find(key);
-        object o = null;
-        
-        if (!ReferenceEquals(g, null) && g != null)
+        ScResultSet sc = lgc.GetComponentScriptInGameObject<ScResultSet>(ScLevelDesignCommon.GAMEOBJECTS_RESULT_SETTER);
+        if (sc != null)
         {
-            var sc = g.GetComponent<Type>();
-            if (!ReferenceEquals(sc, null) && sc != null)
-            {
-                o = sc;
-            }
+            sc.resultTime = scTimer.countTime;
         }
-        return (Type) o;
     }
 
     /// <summary>
@@ -164,37 +157,17 @@ public class ScWarpScences : MonoBehaviour
     /// <param name="red">画像の赤成分</param>
     /// <param name="green">画像の緑成分</param>
     /// <param name="blue">画像の青成分</param>
-    /// <param name="alfa">画像の透明度</param>
+    /// <param name="alpha">画像の透明度</param>
     /// <param name="nextScene">遷移先のシーン名</param>
-    public void FadeOutStart(int red, int green, int blue, int alfa, string nextScene)
+    public void FadeOutStart(float red, float green, float blue, float alpha, string nextScene)
     {
-        SetRGBA(red, green, blue, alfa);
-        SetColor();
+        this.logicScene.red = red;
+        this.logicScene.green = green;
+        this.logicScene.blue = blue;
+        this.logicScene.alpha = alpha;
+        this.fadeImage.color = this.logicScene.fadeImageColor;
         this.currentScene = nextScene;
         this.fadeOutCoroutine = FadeOut();
         StartCoroutine(fadeOutCoroutine);
-    }
-
-    /// <summary>
-    /// 画像に色を代入する関数
-    /// </summary>
-    private void SetColor()
-    {
-        this.fadeImage.color = new Color(red, green, blue, alfa);
-    }
-
-    /// <summary>
-    /// 色の値を設定するための関数
-    /// </summary>
-    /// <param name="r"></param>
-    /// <param name="g"></param>
-    /// <param name="b"></param>
-    /// <param name="a"></param>
-    private void SetRGBA(int r, int g, int b, int a)
-    {
-        this.red = r;
-        this.green = g;
-        this.blue = b;
-        this.alfa = a;
     }
 }

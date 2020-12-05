@@ -46,7 +46,7 @@ public class ScOprationPlayer : MonoBehaviour
     /// <summary>
     /// プレイヤー操作を無効
     /// </summary>
-    public void OparationDisableChange()
+    public void OparationDisableSwitch()
     {
         this.oparationDisabledFlag = true;
     }
@@ -54,7 +54,7 @@ public class ScOprationPlayer : MonoBehaviour
     /// <summary>
     /// プレイヤー操作を有効
     /// </summary>
-    public void OparationEnableChange()
+    public void OparationEnableSwitch()
     {
         this.oparationDisabledFlag = false;
     }

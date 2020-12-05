@@ -13,13 +13,20 @@ public class ScWarpGoal : MonoBehaviour
     private ScOprationPlayer scOprPlyer;
     /// <summary>タイマースクリプト</summary>
     private ScTimer scTimer;
+    /// <summary>共通ロジック</summary>
+    private ScLogicDesignCommon lgc;
+
+    private void Awake()
+    {
+        this.lgc = new ScLogicDesignCommon();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.scWrpScn = (GameObject.Find(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT)).GetComponent<ScWarpScences>();
-        this.scOprPlyer = (GameObject.Find(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL)).GetComponent<ScOprationPlayer>();
-        this.scTimer = (GameObject.Find(ScLevelDesignCommon.GAMEOBJECTS_TIMER).GetComponent<ScTimer>());
+        this.scWrpScn = lgc.GetComponentScriptInGameObject<ScWarpScences>(ScLevelDesignCommon.GAMEOBJECTS_MANAGE_OBJECT);
+        this.scOprPlyer = lgc.GetComponentScriptInGameObject<ScOprationPlayer>(ScLevelDesignOfBall.GAMEOBJECTS_SP_BALL);
+        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(ScLevelDesignCommon.GAMEOBJECTS_TIMER);
     }
 
     // Update is called once per frame
@@ -30,8 +37,8 @@ public class ScWarpGoal : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        scOprPlyer.OparationDisableChange();
+        scOprPlyer.OparationDisableSwitch();
         scTimer.TimerDisableSwitch();
-        scWrpScn.FadeOutStart(0, 0, 0, 0, ScLevelDesignCommon.SCENES_RESULT);
+        scWrpScn.FadeOutStart(ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_COLOR_LEVEL_MIN, ScLevelDesignCommon.IMAGE_ALPHA_LEVEL_MAX, ScLevelDesignCommon.SCENES_RESULT);
     }
 }
