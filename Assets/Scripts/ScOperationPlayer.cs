@@ -19,10 +19,14 @@ public class ScOperationPlayer : MonoBehaviour
     // TODO:20201123 プレイヤー操作フラグを別オブジェクトで管理する？
     /// <summary>プレイヤーの操作禁止フラグ</summary>
     private bool oparationDisabledFlag;
+
+    /// <summary>プレイヤーが衝突したオブジェクトのリスト</summary>
+    private List<GameObject> collisionedObjects;
     
     void Awake()
     {
         this.oparationDisabledFlag = true;
+        this.collisionedObjects = new List<GameObject>();
     }
 
     // Start is called before the first frame update
@@ -40,6 +44,40 @@ public class ScOperationPlayer : MonoBehaviour
         {
             this.direction = (Vector3)bplyr.GetDirectionByOparation();
             rbdy.AddForce(direction * speed);
+
+            foreach (Transform transform in gameObject.transform)
+            {
+                GameObject g = transform.gameObject;
+                g.GetComponent<Rigidbody>().AddForce(direction * speed);
+            }
+
+        }
+    }
+
+    /// <summary>
+    /// オブジェクトが衝突した際に、
+    /// <para/>親オブジェクト　＞　被オブジェクト（衝突されたオブジェクト）
+    /// <para/>となるように被オブジェクトを親オブジェクトの配下に入れる
+    /// <para/>被オブジェクトには下記コンポーネントを追加すること
+    /// <para/>・Rigitbody
+    /// <para/>・Fixed Joint
+    /// </summary>
+    /// <param name="gameObject">被オブジェクト</param>
+    public void OnCollisionEnterParent(GameObject gameObject)
+    {
+        if (this.gameObject.transform.childCount < 1)
+        {
+            gameObject.transform.parent = this.gameObject.transform;
+        }
+        else
+        {
+            foreach (Transform transform in this.gameObject.transform)
+            {
+                if (transform.gameObject != gameObject)
+                {
+                    gameObject.transform.parent = this.gameObject.transform;
+                }
+            }
         }
     }
 
