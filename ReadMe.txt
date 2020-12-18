@@ -1,3 +1,10 @@
+コミット: 337c706d6e17b935ced9c09c442d834a62a19d4e [337c706]
+日時: 2020年12月18日 22:39:40
+・カメラのGameObjectへスクリプト追加とシーン内のポジション調整
+Assets\Scenes\ScStage.unity
+・カメラにプレイヤーを追従させる処理を追加
+Assets\Scripts\ScCameraMove.cs
+
 コミット: 4cfa6a49756981bcddb88489e713e6e3a998d83a [4cfa6a4]
 日時: 2020年12月13日 16:12:58
 ・ステージ床のサイズ調整、衝突確認用オブジェクト配置
