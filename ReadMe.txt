@@ -1,3 +1,12 @@
+コミット: f2abf943a3f6c4d93430fb019ac6659b3f1c592a [f2abf94]
+日時: 2020年12月19日 17:15:27
+・対象オブジェクトの子要素としてエフェクトを作成
+Assets\Scenes\ScStage.unity
+・UIエフェクト設定とエフェクト発生処理の追加
+Assets\Scripts\ScMixer.cs
+・エフェクト演出制御処理を作成
+Assets\Scripts\Commons\CsNormalLogicDesignOfHitObject.cs
+
 コミット: 337c706d6e17b935ced9c09c442d834a62a19d4e [337c706]
 日時: 2020年12月18日 22:39:40
 ・カメラのGameObjectへスクリプト追加とシーン内のポジション調整
