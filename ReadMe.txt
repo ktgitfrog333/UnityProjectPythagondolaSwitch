@@ -1,3 +1,27 @@
+コミット: b920157c25e915ca132f64e2728211d325212d4c [b920157]
+日時: 2020年12月28日 18:06:03
+・Timerオブジェクト内のサブオブジェクト（テキスト）を削除して、サブオブジェクト（Image）を追加
+Assets\Scenes\ScStage.unity
+・タイマー処理をテキストからImage表示へ変更
+Assets\Scripts\ScTimer.cs
+・タイマーテクスチャ用のImageファイル
+Assets\Images\ImageUI_Number.jpg
+・タイマーテクスチャ用のPrefabファイル
+Assets\Prefabs\SmTimer.prefab
+・定数クラスからタイマーオブジェクト名の定義を削除
+Assets\Scripts\Commons\CsNormalLevelDesignOfCommon.cs
+・タイマー用の定数クラス
+Assets\Scripts\Commons\CsNormalLevelDesignOfTimer.cs
+・タイマーオブジェクト名の定数クラス変更に伴い修正
+Assets\Scripts\ScWarpGoal.cs
+Assets\Scripts\ScWarpScences.cs
+・RectMask2D制御用のBeanクラスを追加
+Assets\Scripts\Beans\CsRectMask2DBean.cs
+・RectTransform制御用のBeanクラスを追加
+Assets\Scripts\Beans\CsRectTransformBean.cs
+・Tagへタイマーテキスト識別用のタグを追加
+ProjectSettings\TagManager.asset
+
 コミット: f2abf943a3f6c4d93430fb019ac6659b3f1c592a [f2abf94]
 日時: 2020年12月19日 17:15:27
 ・対象オブジェクトの子要素としてエフェクトを作成

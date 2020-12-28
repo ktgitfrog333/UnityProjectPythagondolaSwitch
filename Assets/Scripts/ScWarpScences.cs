@@ -65,7 +65,7 @@ public class ScWarpScences : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_TIMER);
+        this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfTimer.GAMEOBJECTS_TIMER);
 
         this.fadeInCoroutine = FadeIn();
         this.fadeOutCoroutine = FadeOut();
@@ -114,7 +114,7 @@ public class ScWarpScences : MonoBehaviour
                 }
                 if (scTimer == null)
                 {
-                    this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfCommon.GAMEOBJECTS_TIMER);
+                    this.scTimer = lgc.GetComponentScriptInGameObject<ScTimer>(CsNormalLevelDesignOfTimer.GAMEOBJECTS_TIMER);
                 }
                 if (!ReferenceEquals(scTimer, null) && scTimer != null)
                 {
