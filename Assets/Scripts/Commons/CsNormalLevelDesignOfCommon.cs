@@ -19,10 +19,10 @@ public static class CsNormalLevelDesignOfCommon
     /// フェード処理管理のゲームオブジェクト名
     /// </summary>
     public static readonly string GAMEOBJECTS_MANAGE_OBJECT = "ManageObject";
-    /// <summary>
-    /// タイマーのゲームオブジェクト名
-    /// </summary>
-    public static readonly string GAMEOBJECTS_TIMER = "TxTimer";
+    ///// <summary>
+    ///// タイマーのゲームオブジェクト名
+    ///// </summary>
+    //public static readonly string GAMEOBJECTS_TIMER = "CvTimer";
     /// <summary>
     /// 時間計測結果のゲームオブジェクト名
     /// </summary>
@@ -39,4 +39,12 @@ public static class CsNormalLevelDesignOfCommon
     /// 最小の透明度
     /// </summary>
     public static readonly float IMAGE_ALPHA_LEVEL_MAX = 0f;
+    /// <summary>
+    /// 最小の自然数 -1.0f
+    /// </summary>
+    public static readonly float NATURAL_NUMBER = -1.0f;
+    /// <summary>
+    /// 数字の初期値 0f
+    /// </summary>
+    public static readonly float OFFSET_NUMBER = 0f;
 }
