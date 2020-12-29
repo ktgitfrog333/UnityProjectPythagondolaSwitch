@@ -1,3 +1,19 @@
+コミット: 794751004f712dec2fea9b6307ebd22ff3a012dd [7947510]
+日時: 2020年12月29日 17:28:17
+・ステージシーンに場外判定の床を設置
+Assets\Scenes\ScStage.unity
+・場外判定の床オブジェクトをPrefab化
+Assets\Prefabs\PlGameOver.prefab
+・ゲームオーバーシーン名を定数定義へ追加
+Assets\Scripts\Commons\CsNormalLevelDesignOfCommon.cs
+・ゲームオーバーシーンへ遷移するスクリプトを作成
+Assets\Scripts\ScWarpGameOver.cs
+・ゲームオーバーのシーンを作成してステージシーンへリトライするオブジェクトを配置
+Assets\Scenes\ScGameOver.unity
+・リザルトシーンのリトライ制御オブジェクトのPrefab化
+Assets\Scenes\ScResult.unity
+Assets\Prefabs\GameObject.prefab
+
 コミット: b920157c25e915ca132f64e2728211d325212d4c [b920157]
 日時: 2020年12月28日 18:06:03
 ・Timerオブジェクト内のサブオブジェクト（テキスト）を削除して、サブオブジェクト（Image）を追加
