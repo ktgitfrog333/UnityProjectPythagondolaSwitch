@@ -1,3 +1,17 @@
+コミット: 0ec6134fe8252de5f125a086a4bdb411ce542767 [0ec6134]
+日時: 2020年12月29日 19:19:20
+・タイトルシーンをビルド追加
+ProjectSettings\EditorBuildSettings.asset
+・タイトル用のフォント作成
+Assets\Fonts\rounded-mplus-1c-heavy SDF.asset
+Assets\Fonts\rounded-mplus-1c-heavy.ttf
+・タイトルシーンを作成
+Assets\Scenes\ScTitle.unity
+・タイトルからステージシーンへ遷移するスクリプト
+Assets\Scripts\ScStartButton.cs
+・TextMesh ProをImport、ImportTMPExampies＆Extrasを実行
+Assets\TextMesh Pro\
+
 コミット: 794751004f712dec2fea9b6307ebd22ff3a012dd [7947510]
 日時: 2020年12月29日 17:28:17
 ・ステージシーンに場外判定の床を設置
