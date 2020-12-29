@@ -16,6 +16,10 @@ public static class CsNormalLevelDesignOfCommon
     /// </summary>
     public static readonly string SCENES_RESULT = "ScResult";
     /// <summary>
+    /// ゲームオーバー画面のシーン名
+    /// </summary>
+    public static readonly string SCENES_GAMEOVER = "ScGameOver";
+    /// <summary>
     /// フェード処理管理のゲームオブジェクト名
     /// </summary>
     public static readonly string GAMEOBJECTS_MANAGE_OBJECT = "ManageObject";
