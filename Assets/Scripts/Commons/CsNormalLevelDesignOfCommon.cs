@@ -20,6 +20,10 @@ public static class CsNormalLevelDesignOfCommon
     /// </summary>
     public static readonly string SCENES_GAMEOVER = "ScGameOver";
     /// <summary>
+    /// セレクト画面のシーン名
+    /// </summary>
+    public static readonly string SCENES_STAGE_SELECT = "ScStageSelect";
+    /// <summary>
     /// フェード処理管理のゲームオブジェクト名
     /// </summary>
     public static readonly string GAMEOBJECTS_MANAGE_OBJECT = "ManageObject";
@@ -51,4 +55,20 @@ public static class CsNormalLevelDesignOfCommon
     /// 数字の初期値 0f
     /// </summary>
     public static readonly float OFFSET_NUMBER = 0f;
+    /// <summary>
+    /// スケールの初期値 1f
+    /// </summary>
+    public static readonly float OFFSET_NUMBER_SCALE = 1f;
+    /// <summary>
+    /// ブランクを表す文字列
+    /// </summary>
+    public static readonly string BLANK = "";
+    /// <summary>
+    /// 真を表すBoolean
+    /// </summary>
+    public static readonly bool TRUE = true;
+    /// <summary>
+    /// 偽を表すBoolean
+    /// </summary>
+    public static readonly bool FALSE = false;
 }

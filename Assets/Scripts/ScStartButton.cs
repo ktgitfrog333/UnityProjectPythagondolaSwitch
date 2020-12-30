@@ -19,6 +19,6 @@ public class ScStartButton : MonoBehaviour
 
     public void OnClick()
     {
-        SceneManager.LoadScene(CsNormalLevelDesignOfCommon.SCENES_STAGE);
+        SceneManager.LoadScene(CsNormalLevelDesignOfCommon.SCENES_STAGE_SELECT);
     }
 }
