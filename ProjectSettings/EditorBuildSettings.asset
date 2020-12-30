@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ScTitle.unity
+    guid: 5faeafb0d51d1b9478849f12a2ef1571
+  - enabled: 1
+    path: Assets/Scenes/ScStageSelect.unity
+    guid: 10774295794dba942bc77889d88b0c8e
+  - enabled: 1
     path: Assets/Scenes/ScStage.unity
     guid: 7cd4d2bc819eb704cb4f1f8c4ea541e7
   - enabled: 1
     path: Assets/Scenes/ScResult.unity
     guid: 8b0006c5bd5231c4c907641231bbfe77
+  - enabled: 1
+    path: Assets/Scenes/ScGameOver.unity
+    guid: 831edf1da3d3b284f9f789e46c9ea98f
   m_configObjects: {}
