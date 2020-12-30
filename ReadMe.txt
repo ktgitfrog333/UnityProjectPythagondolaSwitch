@@ -1,3 +1,33 @@
+コミット: 99335a8099794e4928557e0308f3188b6537fcbc [99335a8]
+日時: 2020年12月30日 15:00:57
+・タイトルボタンの遷移先をゲーム画面からステージセレクト画面へ変更
+Assets\Scripts\ScStartButton.cs
+・ステージセレクト画面のシーンを作成
+Assets\Scenes\ScStageSelect.unity
+・ビルド情報へステージセレクト画面を追加
+ProjectSettings\EditorBuildSettings.asset
+・ステージセレクト画面にて、ステージサムネイルを前へ次へ移動するかつ、シーン遷移有効フラグ切り替えボタン制御スクリプト作成
+Assets\Scripts\ScScroll.cs
+Assets\Scripts\ScStageSelectMotion.cs
+・ステージセレクト画面にて、選択されたステージへ遷移する制御スクリプト作成
+Assets\Scripts\ScStageSelect.cs
+・サムネイル表示制御するクラスを作成
+Assets\Scripts\Commons\CsNormalLogicDesignOfStageSelect.cs
+・オブジェクト自身の有効フラグを管理するBeanクラスを作成
+Assets\Scripts\Beans\CsInspectorBean.cs
+・シーンとサムネイル情報を管理するBeanクラスを作成
+Assets\Scripts\Beans\CsStageSelectBean.cs
+・サムネイル表示数等を管理するBeanクラスを作成
+Assets\Scripts\Beans\CsStageSelectMotionBean.cs
+・サムネイル情報を管理する定数クラスを作成
+Assets\Scripts\Commons\CsNormalLevelDesignOfStageSelect.cs
+・ステージ１のサムネイル画像を作成
+Assets\Images\StageSelect_ScStage.jpg
+・定数管理クラスへステージセレクト画面の名前を追加、他、初期値やTRUE、FALSE等の値の定義も追加
+Assets\Scripts\Commons\CsNormalLevelDesignOfCommon.cs
+・RectTransformのBeanへスケール情報を追加
+Assets\Scripts\Beans\CsRectTransformBean.cs
+
 コミット: 0ec6134fe8252de5f125a086a4bdb411ce542767 [0ec6134]
 日時: 2020年12月29日 19:19:20
 ・タイトルシーンをビルド追加
